@@ -1,0 +1,37 @@
+name: Deploy Edrys-Lite Test Website
+
+on:
+  push:
+    branches:
+      - gh-pages
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # build LiaScript
+      - name: Download edrys-Lite test branch
+        run: git clone --branch test https://github.com/edrys-labs/edrys-Lite.git
+      - name: Building edrys-Lite
+        run: |
+          cd edrys-Lite
+          npm install
+          npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./edrys-Lite/dist
+          destination_dir: docs
+          publish_branch: gh-pages
