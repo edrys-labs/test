@@ -1,0 +1,42 @@
+name: Deploy Edrys-Lite Test Website
+
+on:
+  repository_dispatch:
+    types: [trigger-build]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download edrys-Lite test branch
+        run: git clone --branch test https://github.com/edrys-labs/edrys-Lite.git
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Building edrys-Lite
+        env:
+          ICE_SERVERS: ${{ secrets.ICE_SERVERS }}
+        run: |
+          cd edrys-Lite
+          npm install
+          npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./edrys-Lite/dist
+          destination_dir: docs
+          publish_branch: gh-pages
