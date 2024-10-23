@@ -27,7 +27,7 @@ jobs:
 
       - name: Building edrys-Lite
         env:
-          ICE_SERVERS: ${{ secrets.ICE_SERVERS }}
+          TRYSTERO_PEER_CONFIG: ${{ secrets.TRYSTERO_PEER_CONFIG }}
         run: |
           cd edrys-Lite
           npm install
