@@ -29,7 +29,7 @@ jobs:
         env:
           TRYSTERO_PEER_CONFIG: ${{ secrets.TRYSTERO_PEER_CONFIG }}
           WEBRTC_CONFIG: ${{ secrets.WEBRTC_CONFIG_TEST }}
-          WEBRTC_SIGNALING: ${{ secrets.WEBRTC_SIGNALING }}
+          WEBRTC_SIGNALING: ${{ secrets.WEBRTC_SIGNALING_TEST }}
         run: |
           cd edrys-Lite
           npm install
