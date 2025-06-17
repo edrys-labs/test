@@ -30,6 +30,7 @@ jobs:
           TRYSTERO_PEER_CONFIG: ${{ secrets.TRYSTERO_PEER_CONFIG }}
           WEBRTC_CONFIG: ${{ secrets.WEBRTC_CONFIG_TEST }}
           WEBRTC_SIGNALING: ${{ secrets.WEBRTC_SIGNALING_TEST }}
+          WEBSOCKET_SERVER: ${{ secrets.WESOCKET_SERVER_TEST }}
         run: |
           cd edrys-Lite
           npm install
