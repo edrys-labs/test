@@ -23,13 +23,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Building edrys-Lite
         env:
           TRYSTERO_PEER_CONFIG: ${{ secrets.TRYSTERO_PEER_CONFIG }}
-          WEBRTC_CONFIG: ${{ secrets.WEBRTC_CONFIG_TEST }}
-          WEBRTC_SIGNALING: ${{ secrets.WEBRTC_SIGNALING_TEST }}
+          WEBRTC_CONFIG: ${{ secrets.WEBRTC_CONFIG }}
+          WEBRTC_SIGNALING: ${{ secrets.WEBRTC_SIGNALING }}
         run: |
           cd edrys-Lite
           npm install
